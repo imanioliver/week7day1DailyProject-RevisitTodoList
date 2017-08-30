@@ -1,0 +1,41 @@
+<h1>What do <strong>you</strong> have to do?</h1>
+<br>
+<br>
+<br>
+<br>
+
+<h2>Make a new ToDo</h2>
+<form class="mainQuestion" action="/" method="post">
+    <input type="text" name="newTask" value="" placeholder="What is your next task?">
+    <button type="submit" name="button">Submit</button>
+</form>
+
+
+
+{{#tasks}} <!--new Task needs to be defined -->
+<form class="newTask" action="/a" method="post">
+    <button type="submit" name="theTask" value="{{.}}">Complete {{.}}</button> <!--text needs to be defined -->
+</form>
+{{/tasks}}
+
+
+<div class="completeATask">
+
+    <h2>Completed Tasks</h2>
+    {{#complete}}
+        <form class="completedTasks" action="/b" method="post">
+            <button type="submit" name="completeTask">
+                <strike>{{.}}</strike>
+            </button>
+        </form>
+
+
+
+
+<!-- <form class="complete" action="/b" method="post">
+    <input type="submit" name="completedTask" value=""> <!-text needs to be defined -->
+<!-- </form> -->
+
+    {{/complete}}
+<p>If you'd like to push your complete tasks back into your Todos, just click the completed task!</p>
+</div>
