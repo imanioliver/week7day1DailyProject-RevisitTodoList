@@ -14,20 +14,18 @@ module.exports = {
       priority: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
-        allowNull: false,
-        default: false,
-        type: Sequelize.DATE
-      },
       completed: {
-        default: false,
         type: Sequelize.BOOLEAN
       },
       completedAt: {
         type: Sequelize.DATE
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });
