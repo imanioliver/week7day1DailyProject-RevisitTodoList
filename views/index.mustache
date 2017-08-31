@@ -1,50 +1,57 @@
+
 <h1>What do <strong>you</strong> have to do?</h1>
-<br>
-<br>
-<br>
-<br>
 
-<h2>Make a new ToDo</h2>
-<form class="mainQuestion" action="/" method="post">
-    <input type="text" name="title" value="" placeholder="What is your next task?">
-    <input type="text" name="priority" value="" placeholder="priority">
-    <button type="submit" name="button">Submit</button>
-</form>
+<div class="makeNew">
 
+
+    <h2>Make a new ToDo</h2>
+    <form class="mainQuestion" action="/" method="post">
+        New Todo: <input type="text" name="title" value="" placeholder="What is your next task?"><br>
+        Priority:</p><input type="text" name="priority" value="" placeholder="priority"><br>
+        <button type="submit" name="button">Submit</button>
+    </form>
+</div>
 
 
 {{#task}}
 
-
+{{^completed}}
 <div class="theTask">
-    <p><strong>{{title}}</strong></p>
-    <p>Priority: {{priority}}</p>
-    <button  name="button"><a href="/complete/{{id}}">Complete</a></button> <br>
-    <button  name="button"><a href="/edit/{{id}}">Edit</a></button><br>
-    <button  name="button"><a href="/delete/{{id}}">Delete</a></button><br>
+    <div class="taskLabels">
 
-</div>
+        <p>Priority: {{priority}}</p>
+        <p><strong>{{title}}</strong></p>
+    </div>
+        <button class="taskButton" name="button"><a href="/complete/{{id}}">Complete</a></button> <br>
+        <button class="taskButton" name="button"><a href="/edit/{{id}}">Edit</a></button><br>
+        <button class="taskButton" name="button"><a href="/delete/{{id}}">Delete</a></button><br>
 
-{{/task}}
-
-
-<div class="completeATask">
-
-    <h2>Completed Tasks</h2>
-    {{#complete}}
-    <form class="completedTasks" action="/b" method="post">
-        <button type="submit" name="completeTask">
-            <strike>{{.}}</strike>
-        </button>
-    </form>
+    </div>
+    {{/completed}}
+    {{/task}}
 
 
+    <div class="completeATask">
+
+        <h2>Completed Tasks</h2>
+        {{#task}}
+
+        {{#completed}}
+        <form class="completedTasks" action="/incomplete/{{id}}" method="post">
+            <button type="submit" name="completeTask">
+                <strike>{{title}}</strike>
+            </button>
+        </form>
 
 
-    <!-- <form class="complete" action="/b" method="post">
-    <input type="submit" name="completedTask" value=""> <!-text needs to be defined -->
-    <!-- </form> -->
 
-    {{/complete}}
-    <p>If you'd like to push your complete tasks back into your Todos, just click the completed task!</p>
-</div>
+
+        <!-- <form class="complete" action="/b" method="post">
+        <input type="submit" name="completedTask" value=""> <!-text needs to be defined -->
+        <!-- </form> -->
+
+        {{/completed}}
+        {{/task}}
+
+        <p>If you'd like to push your complete tasks back into your Todos, just click the completed task!</p>
+    </div>

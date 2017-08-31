@@ -12,20 +12,25 @@ module.exports = {
         type: Sequelize.STRING
       },
       priority: {
+        allowNull: true,
         type: Sequelize.INTEGER
-      },
-      completed: {
-        type: Sequelize.BOOLEAN
-      },
-      completedAt: {
-        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
+        default: false,
+        type: Sequelize.DATE
+      },
+      completed: {
+        allowNull: false,
+        defaultValue: false,
+        type: Sequelize.BOOLEAN
+      },
+      completedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

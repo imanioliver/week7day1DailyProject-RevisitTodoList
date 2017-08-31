@@ -6,7 +6,6 @@ router.get("/", function(req, res){
     models.Todo.findAll({
     })
     .then(function(data){
-
         res.render("index", {task:data});
     })
 });
@@ -27,7 +26,7 @@ router.post("/", function(req, res){
 router.get("/complete/:id", function(req, res){
 
     models.Todo.update({
-        complete:true
+        completed:true
     }, {
         where: {
             id: req.params.id
@@ -39,11 +38,51 @@ router.get("/complete/:id", function(req, res){
     });
 });
 
+router.post("/incomplete/:id", function(req, res){
 
+    models.Todo.update({
+        completed:false
+    }, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(function(data){
+
+        res.redirect('/');
+    });
+});
+
+router.get("/delete/:id", function(req, res){
+    models.Todo.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(function(data){
+        console.log(data);
+        res.redirect("/")
+    });
+});
+
+router.get("/edit/:id", function(req, res){
+    models.Todo.findById(req.params.id)
+    .then(function(data){
+        res.render("edit", {task:data});
+    })
+});
 
 router.post("/edit/:id", function(req, res){
-
-
+    models.Todo.update({
+        title: req.body.title,
+        priority: req.body.priority
+    }, {where: {
+        id: req.params.id
+        }
+    })
+    .then(function(data){
+        res.redirect("/");
+    })
 })
 
 

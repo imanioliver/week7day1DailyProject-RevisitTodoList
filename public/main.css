@@ -1,0 +1,37 @@
+html {
+
+    background-color: #8FD8D2;
+    color: white;
+}
+
+.container {
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.makeNew {
+    background-color: #DF744A;
+}
+
+
+.theTask {
+    border:solid;
+    border-color: #FEDCD2;
+    border-radius: 5px;
+    border-width: medium;
+    background-color: #FEDCD2;
+}
+
+.theTask {
+    background-color: #DCB239;
+}
+
+
+.taskButton {
+    background-color: white;
+    border: none;
+
+
+}
